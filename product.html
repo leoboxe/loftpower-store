@@ -866,7 +866,7 @@ function lpPick(el){
 function lpUpdateBtn(){
   // real Funnel Engine checkout (same Stripe as Vitiora) — quantity maps to the bed bundle product
   var PIDS={1:'94d462bf-69a1-44ac-924f-b8395e7d1327',2:'22832915-2ea3-4f89-a63f-59a3e0b04ceb',3:'f9cb7a8d-4e45-4d25-bde1-dd39548a00e8'};
-  var url='https://go.vitiorashop.com/loftpaw/checkout?product='+PIDS[LP.qty]+'&sizes='+LP.picks.slice(0,LP.qty).join(',');
+  var url='/checkout.html?product='+PIDS[LP.qty]+'&sizes='+LP.picks.slice(0,LP.qty).join(',');
   var btn=document.getElementById('lpAddBtn');
   if(btn){btn.textContent='Add to Cart — $'+LP.price; btn.setAttribute('href',url);}
   var sb=document.getElementById('lpStickyBtn'); if(sb) sb.setAttribute('href',url);
