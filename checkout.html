@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Secure Checkout | Loftpower</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Montserrat:wght@500;600;700;800&display=swap">
+<style>
+:root{
+  --font-heading:"Montserrat",Arial,sans-serif;
+  --font-body:"Archivo",Arial,sans-serif;
+  --c-text:#2B2B28;--c-bg1:#fff;--c-bg2:#F6F3EC;
+  --c-accent1:#5f6e54;--c-accent2:#C8714F;--c-btn:#C8714F;
+  --c-dark:#2B2B28;--c-green:#3f7d4f;--c-stars:#E0A92E;
+  --radius-btn:999px;--max-w:680px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--c-text);background:var(--c-bg2);-webkit-font-smoothing:antialiased}
+html body img{height:auto;max-width:100%;display:block}
+a{color:var(--c-accent1);text-decoration:none}
+
+.co-anno{background:var(--c-dark);padding:9px 20px;text-align:center}
+.co-anno-inner{max-width:var(--max-w);margin:0 auto;font-family:var(--font-heading);font-size:12px;font-weight:500;color:rgba(255,255,255,.9)}
+.co-anno-inner b{color:var(--c-stars)}
+.co-header{background:#fff;border-bottom:1px solid #ece7dd}
+.co-header-inner{max-width:var(--max-w);margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.co-logo{font-family:var(--font-heading);font-weight:800;font-size:22px;letter-spacing:-.02em;color:var(--c-text)}
+.co-logo span{color:var(--c-accent1)}
+.co-secure{font-size:12px;color:#6f6f68;display:flex;align-items:center;gap:5px}
+
+.co-wrap{max-width:var(--max-w);margin:0 auto;padding:24px 20px 56px}
+
+/* order summary card */
+.co-summary{background:#fff;border:1px solid #ece7dd;border-radius:14px;padding:16px;margin-bottom:18px}
+.co-sum-row{display:flex;gap:14px;align-items:center}
+.co-sum-row img{width:64px;height:64px;border-radius:10px;object-fit:cover;flex:0 0 auto;border:1px solid #ece7dd}
+.co-sum-name{font-family:var(--font-heading);font-weight:700;font-size:15px}
+.co-sum-meta{font-size:13px;color:#6f6f68}
+.co-sum-price{margin-left:auto;font-family:var(--font-heading);font-weight:800;font-size:18px}
+.co-sum-lines{border-top:1px solid #ece7dd;margin-top:14px;padding-top:12px;font-size:14px}
+.co-sum-line{display:flex;justify-content:space-between;margin:6px 0;color:#555}
+.co-sum-total{display:flex;justify-content:space-between;border-top:1px solid #ece7dd;margin-top:10px;padding-top:12px;font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--c-text)}
+.co-green{color:var(--c-green);font-weight:700}
+
+/* express */
+.co-applepay{display:block;width:100%;background:#000;color:#fff;border:none;border-radius:10px;padding:14px;font-family:var(--font-heading);font-weight:600;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px}
+.co-or{display:flex;align-items:center;gap:12px;color:#9a948a;font-size:13px;margin:16px 0;text-transform:uppercase;letter-spacing:.08em}
+.co-or::before,.co-or::after{content:"";flex:1;height:1px;background:#ddd6c9}
+
+/* form */
+.co-card{background:#fff;border:1px solid #ece7dd;border-radius:14px;padding:18px;margin-bottom:16px}
+.co-card h3{font-family:var(--font-heading);font-weight:700;font-size:15px;margin-bottom:12px}
+.co-field{position:relative;margin-bottom:10px}
+.co-field input,.co-field select{
+  width:100%;padding:18px 12px 7px;font-size:16px;font-family:var(--font-body);
+  border:1px solid #d8d2c6;border-radius:9px;background:#fff;color:var(--c-text);
+  outline:none;transition:border-color .15s,box-shadow .15s;
+}
+.co-field input:focus,.co-field select:focus{border-color:var(--c-accent1);box-shadow:0 0 0 3px rgba(95,110,84,.12)}
+.co-field label{position:absolute;left:12px;top:13px;color:#9a948a;font-size:13px;pointer-events:none;transition:.15s}
+.co-field input:focus+label,.co-field input:not(:placeholder-shown)+label{top:6px;font-size:11px;color:var(--c-accent1)}
+.co-field input::placeholder{color:transparent}
+.co-row{display:flex;gap:10px;flex-wrap:wrap}
+.co-row .co-field{flex:1 1 130px;min-width:0}
+.co-pms{display:inline-flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.co-pms svg{height:26px;width:auto;display:block;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+
+.co-pay{display:block;width:100%;background:var(--c-btn);color:#fff;font-family:var(--font-heading);font-weight:700;font-size:18px;padding:17px;border:none;border-radius:var(--radius-btn);cursor:pointer;min-height:54px;text-align:center;text-decoration:none}
+.co-pay:hover{background:#b1603f}
+.co-trust{text-align:center;font-size:13px;color:#6f6f68;margin-top:14px;line-height:1.7}
+.co-trust b{color:var(--c-text)}
+.co-note{background:#fff8f2;border:1px solid #f0d9c6;border-radius:10px;padding:10px 13px;font-size:12.5px;color:#8a5a3a;margin-bottom:16px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div class="co-anno"><div class="co-anno-inner">🔒 <b>Secure 256-bit SSL checkout</b> · 120-night risk-free trial · Free shipping</div></div>
+
+<header class="co-header">
+  <div class="co-header-inner">
+    <a href="index.html" class="co-logo">Loft<span>power</span></a>
+    <span class="co-secure">🔒 Secure checkout</span>
+  </div>
+</header>
+
+<div class="co-wrap">
+
+  <!-- ORDER SUMMARY -->
+  <div class="co-summary">
+    <div class="co-sum-row">
+      <img src="images/prod_main.jpg" alt="Loftpower Orthopedic Memory-Foam Dog Bed">
+      <div>
+        <div class="co-sum-name">Orthopedic Memory-Foam Dog Bed</div>
+        <div class="co-sum-meta">Size: Large · Qty 1</div>
+      </div>
+      <div class="co-sum-price">$149</div>
+    </div>
+    <div class="co-sum-lines">
+      <div class="co-sum-line"><span>Subtotal</span><span>$149.00</span></div>
+      <div class="co-sum-line"><span>Waterproof liner</span><span class="co-green">FREE</span></div>
+      <div class="co-sum-line"><span>Shipping</span><span class="co-green">FREE</span></div>
+      <div class="co-sum-total"><span>Total</span><span>$149.00</span></div>
+    </div>
+  </div>
+
+  <div class="co-note">Demo checkout — this front-end is for preview only. Real card &amp; Apple&nbsp;Pay processing gets wired to Stripe when the store goes into the Funnel Engine.</div>
+
+  <!-- EXPRESS -->
+  <button class="co-applepay" type="button"><svg viewBox="0 0 24 24" width="17" height="17" fill="#fff" aria-hidden="true" style="margin-top:-2px"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701z"/></svg> Pay</button>
+  <div class="co-or">or pay with card</div>
+
+  <form onsubmit="event.preventDefault();window.location.href='thankyou.html';">
+    <!-- CONTACT -->
+    <div class="co-card">
+      <h3>Contact</h3>
+      <div class="co-field"><input type="email" id="email" placeholder=" " required><label for="email">Email address</label></div>
+    </div>
+
+    <!-- DELIVERY -->
+    <div class="co-card">
+      <h3>Delivery</h3>
+      <div class="co-row">
+        <div class="co-field"><input id="fn" placeholder=" " required><label for="fn">First name</label></div>
+        <div class="co-field"><input id="ln" placeholder=" " required><label for="ln">Last name</label></div>
+      </div>
+      <div class="co-field"><input id="addr" placeholder=" " required><label for="addr">Address</label></div>
+      <div class="co-field"><input id="apt" placeholder=" "><label for="apt">Apartment, suite (optional)</label></div>
+      <div class="co-row">
+        <div class="co-field"><input id="city" placeholder=" " required><label for="city">City</label></div>
+        <div class="co-field"><input id="state" placeholder=" " required><label for="state">State</label></div>
+        <div class="co-field"><input id="zip" placeholder=" " required><label for="zip">ZIP code</label></div>
+      </div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="co-card">
+      <h3>Payment</h3>
+      <span class="co-pms" aria-label="Accepted payment methods">
+        <svg viewBox="0 0 40 26" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visa"><rect width="40" height="26" rx="4" fill="#fff" stroke="#e5e0d6"/><text x="20" y="17.5" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" font-style="italic" fill="#1A1F71" text-anchor="middle">VISA</text></svg>
+        <svg viewBox="0 0 40 26" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mastercard"><rect width="40" height="26" rx="4" fill="#fff" stroke="#e5e0d6"/><circle cx="16.5" cy="13" r="6.5" fill="#EB001B"/><circle cx="23.5" cy="13" r="6.5" fill="#F79E1B"/><path d="M20 8.1a6.5 6.5 0 0 0 0 9.8 6.5 6.5 0 0 0 0-9.8z" fill="#FF5F00"/></svg>
+        <svg viewBox="0 0 40 26" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="American Express"><rect width="40" height="26" rx="4" fill="#1F72CD"/><text x="20" y="16" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing=".3">AMEX</text></svg>
+        <svg viewBox="0 0 52 26" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Apple Pay"><rect width="52" height="26" rx="4" fill="#fff" stroke="#e5e0d6"/><g transform="translate(9,5.5) scale(.6)"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701z" fill="#000"/></g><text x="36" y="17.5" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="600" fill="#000" text-anchor="middle">Pay</text></svg>
+      </span>
+      <div class="co-field"><input id="card" placeholder=" " inputmode="numeric" required><label for="card">Card number</label></div>
+      <div class="co-row">
+        <div class="co-field"><input id="exp" placeholder=" " required><label for="exp">MM / YY</label></div>
+        <div class="co-field"><input id="cvc" placeholder=" " inputmode="numeric" required><label for="cvc">CVC</label></div>
+      </div>
+    </div>
+
+    <button class="co-pay" type="submit">Pay $149.00</button>
+    <div class="co-trust">🔒 <b>Guaranteed safe &amp; secure</b> · 256-bit SSL encryption<br>120-night money-back guarantee · 10-year warranty</div>
+  </form>
+
+</div>
+</body>
+</html>
