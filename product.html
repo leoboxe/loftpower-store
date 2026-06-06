@@ -455,6 +455,7 @@ details.lp-faq-item:not([open]) .lp-faq-a{display:none}
   gtag('js', new Date());
 
   gtag('config', 'AW-18185356647');
+  function lpATC(){if(window.__lpatc)return;window.__lpatc=1;try{gtag('event','conversion',{'send_to':'AW-18185356647/CoRBCNfhkLocEOeKut9D'});}catch(e){}}
 </script>
 </head>
 <body>
@@ -531,7 +532,7 @@ details.lp-faq-item:not([open]) .lp-faq-a{display:none}
     <div class="lp-select-label" id="lpSizeLabel">2. Choose your dog's size:</div>
     <div class="lp-sizewrap" id="lpSizeRows"></div>
 
-    <a href="checkout.html" class="lp-btn" id="lpAddBtn">Add to Cart — $149</a>
+    <a href="checkout.html" class="lp-btn" id="lpAddBtn" onclick="lpATC()">Add to Cart — $149</a>
     <div class="lp-pay">
       <span>🔒&nbsp;Guaranteed safe &amp; secure checkout</span>
       <span class="lp-pms" aria-label="Accepted payment methods">
@@ -837,7 +838,7 @@ details.lp-faq-item:not([open]) .lp-faq-a{display:none}
     <div class="lp-sticky-p">$149 <span class="was">$298</span></div>
     <div class="lp-sticky-sub">120-night trial</div>
   </div>
-  <a href="checkout.html" class="lp-btn" id="lpStickyBtn">Add to Cart</a>
+  <a href="checkout.html" class="lp-btn" id="lpStickyBtn" onclick="lpATC()">Add to Cart</a>
 </div>
 
 <script>
